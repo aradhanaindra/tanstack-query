@@ -1,19 +1,16 @@
-'use client'
-import Link from "next/link";
-import Regular from "./methods/Regular";
-import TanStack from "./methods/TanStack";
-import { CaretRight } from "@phosphor-icons/react/dist/ssr";
+import DemoSelector from "./components/demo-selector";
 
-export default function Home() {
+const Page = () => {
   return (
-    <main className="bg-neutral-900 w-svw min-h-svh space-y-4">
-      <div className="flex justify-end">
-        <Link href="/about" className="flex items-center flex-shrink gap-4 px-6 py-6 transition-colors hover:bg-neutral-600 text-neutral-300">Go to about page <CaretRight className="text-neutral-300" /></Link>
+    <div className="flex w-svw min-h-svh justify-center items-center">
+      <div className="flex flex-col justify-center items-center gap-4">
+        <h1 className="text-5xl text-white font-bold">
+          Tanstack Query Demo
+        </h1>
+        <DemoSelector />
       </div>
-      <div className="flex justify-center">
-        <TanStack />
-        <Regular />
-      </div>
-    </main>
+    </div>
   );
 }
+
+export default Page;

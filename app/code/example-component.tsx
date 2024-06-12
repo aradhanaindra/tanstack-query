@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/product-card";
 
 const ExampleComponent = () => {
   const { data, isLoading, error } = useQuery({

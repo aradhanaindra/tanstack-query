@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
-import "./globals.css";
-import { cn } from "./lib/utils";
+import { Figtree, Inter, Plus_Jakarta_Sans } from "next/font/google";
+import Provider from "../provider";
+import DemoSelector from "../components/demo-selector";
+import { cn } from "../lib/utils";
 
 const mainFont = Figtree({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(mainFont.className, "bg-neutral-900 w-svw min-h-svh")}>
-        {children}
+        <Provider>
+          <DemoSelector/>
+          {children}
+        </Provider>
       </body>
     </html>
   );
