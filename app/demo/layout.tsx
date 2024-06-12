@@ -20,8 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(mainFont.className, "bg-neutral-900 w-svw min-h-svh")}>
         <Provider>
-          <DemoSelector/>
-          {children}
+          <DemoSelector />
+          <div className="mt-16">
+            {children}
+          </div>
         </Provider>
       </body>
     </html>

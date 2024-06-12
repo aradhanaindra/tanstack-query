@@ -13,7 +13,8 @@ const TanStack = () => {
     }
   })
 
-  return <ProductList products={products} refetch={refetch} isFetching={isFetching} isLoading={isLoading} />
+  return <ProductList title="TanStack Query" products={products} refetch={refetch} isFetching={isFetching} isLoading={isLoading} />
 }
 
 export default TanStack;
+

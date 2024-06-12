@@ -2,15 +2,17 @@ import { ArrowClockwise } from "@phosphor-icons/react";
 import { cn } from "../lib/utils";
 import { Product } from "../types";
 import ProductCard, { SkeletonProductCard } from "./product-card";
+import FetchStatus from "./fetch-status";
 
 type ProductListProps = {
+  title: string;
   isFetching?: boolean;
   isLoading?: boolean;
   products: Product[] | null | undefined;
   refetch?: () => void;
 }
 
-const ProductList = ({ isLoading, isFetching, products, refetch }: ProductListProps) => {
+const ProductList = ({ title, isLoading, isFetching, products, refetch }: ProductListProps) => {
   const handleRefetch = () => {
     if (refetch) refetch();
   }
@@ -26,15 +28,15 @@ const ProductList = ({ isLoading, isFetching, products, refetch }: ProductListPr
   }
 
   return (
-    <div className="h-full px-8 space-y-8 text-white">
-      <div className="space-y-4">
-        <div className="flex gap-4 items-center">
-          <h1 className="text-4xl font-bold">Using Tanstack Query</h1>
-          <button className={cn("rounded-full p-3 border border-neutral-800 hover:bg-neutral-800 transition-colors", isFetching && "animate-spin")} onClick={() => handleRefetch()}>
-            <ArrowClockwise size={18} />
+    <div className="h-full space-y-4 text-white">
+     <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <button className={cn("rounded-full p-2 border border-neutral-800 hover:bg-neutral-800 transition-colors", isFetching && "animate-spin")} onClick={() => handleRefetch()}>
+            <ArrowClockwise />
           </button>
         </div>
-        {isFetching ? <p className="inline-block px-4 py-1 bg-purple-900 rounded-full">Fetching</p> : <p className="inline-block px-4 py-1 bg-green-900 rounded-full">Done</p>}
+        <FetchStatus isFetching={isFetching}/>
       </div>
       <div className="grid grid-cols-1 gap-4">
         <Content />

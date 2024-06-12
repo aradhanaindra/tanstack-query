@@ -6,11 +6,8 @@ import Regular from "../../methods/Regular";
 
 export default function Page() {
   return (
-    <main className="bg-neutral-900 w-svw min-h-svh space-y-4">
-      <div className="flex justify-end">
-        <Link href="/demo/about" className="flex items-center flex-shrink gap-4 px-6 py-6 transition-colors hover:bg-neutral-600 text-neutral-300">Go to about page <CaretRight className="text-neutral-300" /></Link>
-      </div>
-      <div className="flex justify-center">
+    <main className="space-y-4 bg-neutral-900 w-svw min-h-svh">
+      <div className="flex justify-center gap-8">
         <TanStack />
         <Regular />
       </div>

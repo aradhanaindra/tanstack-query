@@ -23,7 +23,7 @@ const Regular = () => {
     fetchData();
   }, [])
 
-  return <ProductList products={data} refetch={fetchData} isFetching={isLoading} isLoading={isLoading} />
+  return <ProductList title="Regular Fetch" products={data} refetch={fetchData} isFetching={isLoading} isLoading={isLoading} />
 }
 
 export default Regular;

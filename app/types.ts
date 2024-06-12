@@ -4,3 +4,5 @@ export type Product = {
   imageURL: string;
   category: string;
 }
+
+export type Category = string
