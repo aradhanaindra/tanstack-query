@@ -9,7 +9,7 @@ const DemoSelector = () => {
         <div className="flex gap-4">
           <DemoLink href={"/demo/with-vs-without-tanstack-query"}>With vs Without Tanstack Query</DemoLink>
           <DemoLink href={"/demo/one-key-one-request"}>One key, one request</DemoLink>
-          <DemoLink href={"/demo/optimistic-updates"}>Optimistic updates</DemoLink>
+          <DemoLink href={"/demo/optimistic-update"}>Optimistic updates</DemoLink>
           <DemoLink href={"/demo/parallel-and-dependent-query"}>Parallel & Dependent queries</DemoLink>
         </div>
         <DemoLink href={"/demo/about"}>About</DemoLink>
