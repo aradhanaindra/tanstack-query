@@ -4,17 +4,28 @@ import { Product } from "../types";
 import ProductList from "../components/product-list";
 
 const TanStack = () => {
-  const { data: products, isLoading, error, isFetching, refetch } = useQuery({
+  const { data, isLoading, error, isFetching, refetch } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
+      // fetch data here...
       const response: any = await fetch("http://localhost:3000/api/products");
       const responseJSON = (await response.clone().json())
-      return responseJSON.products as Product[];
-    }
+      return responseJSON;
+    },
+    select: (data) => data.products as Product[],
   })
 
-  return <ProductList title="TanStack Query" products={products} refetch={refetch} isFetching={isFetching} isLoading={isLoading} />
+  return <ProductList
+    title="TanStack Query"
+    products={data}
+    refetch={refetch}
+    isFetching={isFetching}
+    isLoading={isLoading} />
 }
 
 export default TanStack;
+
+
+
+
 
