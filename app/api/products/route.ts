@@ -1,10 +1,11 @@
-import consola from "consola";
-import data from "../../data/products.json"
-
+import path from "path";
+import { promises as fs } from 'fs';
+import { NextResponse } from "next/server";
+export const dynamic = 'force-dynamic'
 const wait = (t: number) => new Promise((resolve, reject) => setTimeout(resolve, t))
-let amount = 0;
 export async function GET() {
   await wait(2000)
-  consola.box(`processing... ${amount++}`)
-  return Response.json(data)
+  const filePath = path.join(process.cwd(), '/app/data/products.json');
+  const content = await fs.readFile(filePath, 'utf-8');
+  return NextResponse.json(JSON.parse(content), { status: 200 })
 }

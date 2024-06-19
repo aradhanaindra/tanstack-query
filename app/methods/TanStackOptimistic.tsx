@@ -7,12 +7,9 @@ const TanStackOptimistic = () => {
   const { data, isLoading, error, isFetching, refetch } = useQuery({
     queryKey: ["optimistic-products"],
     queryFn: async ({ signal }) => {
-      // fetch data here...
-      console.log("querying...")
       const response: any = await fetch("http://localhost:3000/api/products/optimistic-update", { cache: "no-store", signal });
       const clone = await response.clone()
       const json = await clone.json()
-      console.log(json)
       return json
     },
     select: (response) => {

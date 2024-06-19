@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from 'fs'
-
+export const dynamic = 'force-dynamic'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     fs.writeFile('./app/data/optimistic-update-products.json', JSON.stringify(body, null, "  "), { flag: 'w+' },
-      (e) => console.log(e))
+      (e) => e)
     return NextResponse.json({
       success: true
     }, {
