@@ -91,7 +91,7 @@ function Updater() {
     setValue(val);
   }, []);
 
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, error } = useMutation({
     mutationFn: (data: string) => {
       return fetch("http://localhost:3000/api/products/optimistic-update/insert", {
         method: "POST",
@@ -100,15 +100,13 @@ function Updater() {
       })
     },
     onMutate: () => {
-      console.log("invalidating")
       queryClient.cancelQueries({ queryKey: ['optimistic-products'] })
       const previousData = queryClient.getQueryData(['optimistic-products'])
       const newData = JSON.parse(value)
-      console.log(newData)
       queryClient.setQueryData(['optimistic-products'], newData)
       return { previousData }
     },
-    onSuccess: (data, variables, context) => {
+    onSuccess: (response, variables, context) => {
       toast.success("Update data success");
     },
     onError: (error, variables, context) => {
@@ -119,6 +117,7 @@ function Updater() {
       await queryClient.invalidateQueries({ queryKey: ['optimistic-products'] })
     },
   })
+
 
 
 
