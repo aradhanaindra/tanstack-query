@@ -1,3 +1,4 @@
+import Regular from "@/app/methods/Regular";
 import TanStack from "@/app/methods/TanStack";
 
 const Page = () => {
@@ -7,6 +8,9 @@ const Page = () => {
       <div className="flex gap-8">
         <TanStack />
         <TanStack />
+        {/* <Regular/>
+        <Regular/> */}
+
       </div>
     </main>
   );

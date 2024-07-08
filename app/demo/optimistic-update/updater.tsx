@@ -113,10 +113,12 @@ function Updater() {
       toast.error("Failed to update data");
       queryClient.setQueryData(['optimistic-products'], context!.previousData)
     },
-    onSettled: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['optimistic-products'] })
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['optimistic-products'] })
     },
   })
+
+  
 
 
 
