@@ -3,6 +3,7 @@ import { cn } from "../lib/utils";
 import { Product } from "../types";
 import ProductCard, { SkeletonProductCard } from "./product-card";
 import FetchStatus from "./fetch-status";
+import { QueryClient } from "@tanstack/react-query";
 
 type ProductListProps = {
   title: string;
@@ -10,16 +11,27 @@ type ProductListProps = {
   isLoading?: boolean;
   products: Product[] | null | undefined;
   refetch?: () => void;
+  error: Error;
 }
 
-const ProductList = ({ title, isLoading, isFetching, products, refetch }: ProductListProps) => {
+const queryClient = new QueryClient()
+
+const ProductList = ({ error, title, isLoading, isFetching, products, refetch }: ProductListProps) => {
   const handleRefetch = () => {
     if (refetch) refetch();
   }
 
+
   const Content = () => {
     if (isLoading) {
       return <ProductListLoading />
+    }
+    if(error){
+      const data = queryClient.getQueryData(['products']) as Product[];
+      if(data){
+        return <ProductListContent products={data}/>
+      }
+      return "Nothing"
     }
     if(!products || products.length == 0){
       return <p>No Products</p>

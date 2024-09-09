@@ -13,6 +13,7 @@ const TanStack = () => {
       return responseJSON;
     },
     select: (data) => data.products as Product[],
+    refetchOnWindowFocus: false
   })
 
   return <ProductList
@@ -20,7 +21,8 @@ const TanStack = () => {
     products={data}
     refetch={refetch}
     isFetching={isFetching}
-    isLoading={isLoading} />
+    isLoading={isLoading}
+    error={error!} />
 }
 
 export default TanStack;

@@ -100,7 +100,7 @@ function Updater() {
       })
     },
     onMutate: () => {
-      queryClient.cancelQueries({ queryKey: ['optimistic-products'] })
+      // queryClient.cancelQueries({ queryKey: ['optimistic-products'] })
       const previousData = queryClient.getQueryData(['optimistic-products'])
       const newData = JSON.parse(value)
       queryClient.setQueryData(['optimistic-products'], newData)
